@@ -1,0 +1,213 @@
+/* =========================================
+   GLOBAL STYLES (Pengaturan Dasar)
+   ========================================= */
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #f4f4f9;
+  color: #333;
+  margin: 0;
+  padding: 40px 20px;
+  line-height: 1.6;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* Khusus untuk halaman yang berisi Slide PPT penuh */
+body.slide-page {
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #222;
+  text-align: left;
+}
+
+/* =========================================
+   TOMBOL & MENU 
+   ========================================= */
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto 20px auto;
+}
+
+/* Tombol Default (Biru) */
+.btn {
+  padding: 15px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.3s;
+}
+.btn:hover {
+  background-color: #0056b3;
+}
+
+/* Warna khusus (Tambahkan class ini di HTML jika butuh warna lain) */
+.btn-green {
+  background-color: #28a745;
+}
+.btn-green:hover {
+  background-color: #218838;
+}
+
+.btn-orange {
+  background-color: #ff9800;
+}
+.btn-orange:hover {
+  background-color: #e68a00;
+}
+
+/* Tombol Non-Aktif (Segera Hadir) */
+.btn-disabled {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Tombol Kembali (Bawah) */
+.btn-back {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: 0.2s;
+}
+.btn-back:hover {
+  background-color: #555;
+}
+
+/* =========================================
+   LAYOUT CATATAN CORNELL (Materi 1)
+   ========================================= */
+.cornell-wrapper {
+  text-align: left;
+}
+.cornell-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  border: 2px solid #333;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.cornell-row {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+}
+.cornell-left {
+  width: 35%;
+  background-color: #fdfdfd;
+  padding: 20px;
+  border-right: 2px solid #333;
+  font-weight: bold;
+  color: #2c3e50;
+  font-size: 16px;
+}
+.cornell-right {
+  width: 65%;
+  padding: 20px;
+  background-color: #ffffff;
+}
+.cornell-bottom {
+  background-color: #e8f4f8;
+  padding: 20px;
+  border-top: 2px solid #333;
+}
+.cornell-bottom h3 {
+  margin-top: 0;
+  color: #0056b3;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+.cornell-bottom p {
+  margin: 0;
+  font-weight: bold;
+  font-size: 16px;
+}
+ul {
+  margin: 0;
+  padding-left: 20px;
+}
+li {
+  margin-bottom: 8px;
+}
+
+/* =========================================
+   LAYOUT HEADER & SLIDE PPT (Materi 2)
+   ========================================= */
+.slide-header {
+  background-color: #111;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+}
+.slide-header .btn-back {
+  margin-top: 0;
+  margin-right: 20px;
+  background-color: #444;
+}
+.slide-header .btn-back:hover {
+  background-color: #666;
+}
+.slide-header h1 {
+  color: white;
+  font-size: 18px;
+  margin: 0;
+}
+
+.slide-container {
+  flex-grow: 1;
+  width: 100%;
+}
+.slide-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* =========================================
+   RESPONSIF UNTUK HP
+   ========================================= */
+@media (max-width: 600px) {
+  .cornell-row {
+    flex-direction: column;
+  }
+  .cornell-left {
+    width: 100%;
+    border-right: none;
+    border-bottom: 2px dashed #ccc;
+    padding-bottom: 10px;
+  }
+  .cornell-right {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .slide-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
