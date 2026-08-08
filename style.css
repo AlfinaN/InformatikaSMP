@@ -3,7 +3,7 @@
    ========================================= */
 body {
   font-family: Arial, sans-serif;
-  text-align: center;
+  text-align: left;
   background-color: #f4f4f9;
   color: #333;
   margin: 0;
@@ -11,9 +11,18 @@ body {
   line-height: 1.6;
 }
 
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /* Optional: set a width if the image is too large */
+  width: 80%;
+}
+
 h1 {
   color: #333;
   margin-bottom: 30px;
+  text-align: center;
 }
 
 /* Khusus untuk halaman yang berisi Slide PPT penuh */
@@ -22,7 +31,7 @@ body.slide-page {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #222;
+  background-color: #eaeaea;
   text-align: left;
 }
 
@@ -159,7 +168,7 @@ li {
    LAYOUT HEADER & SLIDE PPT (Materi 2)
    ========================================= */
 .slide-header {
-  background-color: #111;
+  background-color: #ffffff;
   padding: 10px 20px;
   display: flex;
   align-items: center;
