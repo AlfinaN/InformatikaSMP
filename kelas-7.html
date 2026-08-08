@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Materi Kelas 7</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f4f4f9;
+        padding: 40px 20px;
+      }
+      h1 {
+        color: #333;
+        margin-bottom: 30px;
+      }
+
+      .menu-container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      .btn {
+        padding: 15px 20px;
+        background-color: #28a745; /* Warna hijau agar beda dengan menu utama */
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.3s;
+      }
+      .btn:hover {
+        background-color: #218838;
+      }
+
+      /* Desain khusus tombol materi yang belum ada/segera hadir */
+      .btn-disabled {
+        background-color: #cccccc;
+        color: #666666;
+        cursor: not-allowed;
+      }
+      .btn-disabled:hover {
+        background-color: #cccccc;
+      }
+
+      /* Desain tombol kembali */
+      .btn-back {
+        display: inline-block;
+        margin-top: 30px;
+        padding: 10px 20px;
+        background-color: #333;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>📘 Materi Informatika Kelas 7</h1>
+
+    <div class="menu-container">
+      <!-- Contoh daftar materi yang terus bertambah -->
+      <a href="k7-materi1.html" class="btn">Materi 1: Pengantar TIK</a>
+
+      <!-- Ini materi PPT yang kamu sebutkan tadi -->
+      <a href="k7-materi2.html" class="btn">Materi 2: Berpikir Komputasional</a>
+
+      <!-- Contoh slot untuk materi masa depan yang belum diupload -->
+      <a href="#" class="btn btn-disabled">Materi 3: (Segera Hadir)</a>
+      <a href="#" class="btn btn-disabled">Materi 4: (Segera Hadir)</a>
+    </div>
+
+    <!-- Tombol untuk balik ke index.html -->
+    <a href="index.html" class="btn-back">🔙 Kembali ke Home</a>
+  </body>
+</html>

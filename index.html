@@ -3,40 +3,52 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Poster Edukasi - BIMITS</title>
+    <title>Pusat Materi Belajar</title>
     <style>
-      /* CSS ini agar presentasinya penuh (fullscreen) di layar HP atau TV */
-      body,
-      html {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        overflow: hidden;
-        background-color: #000; /* Latar belakang hitam */
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f4f4f9;
+        padding: 40px 20px;
       }
-      iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: none;
+      h1 {
+        color: #333;
+        margin-bottom: 30px;
+      }
+
+      /* Desain Tombol */
+      .menu-container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      .btn {
+        padding: 15px 20px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.3s;
+      }
+      .btn:hover {
+        background-color: #0056b3;
       }
     </style>
   </head>
   <body>
-    <!-- PASTE KODE DARI GOOGLE SLIDES DI BAWAH BARIS INI -->
+    <h1>📚 Pilih Materi Belajar</h1>
 
-    <iframe
-      src="https://docs.google.com/presentation/d/e/2PACX-1vSGbuc0wHDhtBsQb5o_1bh2bEfp6SBiDb5gZaFtYKfVnavpgeA5Be5PnIzGcjVjCw/pubembed?start=false&loop=false&delayms=3000"
-      frameborder="0"
-      width="1920"
-      height="1109"
-      allowfullscreen="true"
-      mozallowfullscreen="true"
-      webkitallowfullscreen="true"
-    ></iframe>
-
-    <!-- PASTE KODE DARI GOOGLE SLIDES DI ATAS BARIS INI -->
+    <div class="menu-container">
+      <!-- Tautan ini harus sama persis dengan nama file HTML yang kamu buat -->
+      <a href="kelas-7.html" class="btn">Materi Kelas 7</a>
+      <a href="kelas-8.html" class="btn">Materi Kelas 8</a>
+      <a href="kelas-9.html" class="btn">Materi Kelas 9</a>
+      <a href="games.html" class="btn">Games</a>
+      <a href="eskul-multimedia.html" class="btn">Eskul Multimedia</a>
+    </div>
   </body>
 </html>
