@@ -3,103 +3,88 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Materi 1 - Analisis & Pencarian Data</title>
+    <title>Materi 4 - Keamanan Internet & Anti-Hoaks</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <!-- Header -->
     <div class="header">
-      <a href="kelas-8.html" class="btn-back">🔙 Kembali</a>
+      <a href="kelas-9.html" class="btn-back">🔙 Kembali</a>
     </div>
-    <h1>Materi 1: Analisis & Pencarian Data</h1>
+    <h1>Materi 5: Keamanan Internet & Literasi Digital</h1>
     <!-- Container Cornell -->
     <div class="cornell-container">
-      <!-- Review Dasar & Visualisasi (Digabung) -->
+      <!-- Definisi Hoaks -->
       <div class="cornell-row">
-        <div class="cornell-left">Review: Sel, Baris, Kolom & Visualisasi</div>
+        <div class="cornell-left">Apa itu Hoaks (Hoax)?</div>
         <div class="cornell-right">
-          <img src="img/excel.jpg" alt="" />
-          <p></p>
-          • <b>Baris (Row):</b> Deretan sel mendatar (horizontal) yang ditandai
-          dengan Angka (1, 2, 3).<br />
-          • <b>Kolom (Column):</b> Deretan sel menurun (vertikal) yang ditandai
-          dengan Huruf (A, B, C).<br />
-          • <b>Sel (Cell):</b> Titik pertemuan antara kolom dan baris (contoh:
-          Sel B3).<br />
-          • <b>Visualisasi Grafik:</b> Data dalam tabel dapat diubah menjadi
-          gambar agar mudah dibaca, seperti Grafik Batang (<i>Column/Bar</i>)
-          untuk membandingkan jumlah, atau Grafik Lingkaran (<i>Pie</i>) untuk
-          melihat porsi/persentase.
+          <b>Hoaks</b> adalah informasi palsu, berita bohong, atau fakta yang
+          direkayasa agar seolah-olah terlihat nyata dan benar. Tujuannya sangat
+          beragam, mulai dari sekadar iseng, mencari sensasi, menipu untuk
+          mendapatkan uang, hingga memicu kepanikan dan perpecahan di
+          masyarakat.
         </div>
       </div>
 
-      <!-- Definisi Pencarian Data -->
+      <!-- Ciri-ciri Hoaks -->
       <div class="cornell-row">
-        <div class="cornell-left">Definisi Pencarian Data</div>
+        <div class="cornell-left">Cara Mengenali Berita Hoaks</div>
         <div class="cornell-right">
-          Proses menemukan letak data atau informasi tertentu di dalam
-          sekumpulan tabel data yang sangat banyak secara otomatis menggunakan
-          rumus.
+          Jadilah pengguna internet yang cerdas! Berita bohong biasanya memiliki
+          ciri-ciri berikut:<br /><br />
+          • <b>Judul Provokatif:</b> Judulnya terlalu heboh, memancing emosi,
+          atau *clickbait*.<br />
+          • <b>Sumber Tidak Jelas:</b> Tidak berasal dari media berita resmi
+          (hanya tulisan *broadcast* di WhatsApp tanpa penulis yang jelas).<br />
+          • <b>Memaksa Dibagikan:</b> Biasanya diakhiri dengan kalimat ancaman
+          atau perintah seperti <i>"Viralkan!"</i>,
+          <i>"Sebarkan ke 10 grup atau Anda akan celaka!"</i>.<br />
+          • <b>Foto Daur Ulang:</b> Menggunakan foto kejadian di masa lalu yang
+          diedit atau diklaim sebagai kejadian baru.
         </div>
       </div>
 
-      <!-- VLOOKUP & HLOOKUP Digabung -->
+      <!-- Poster sebagai Solusi -->
       <div class="cornell-row">
-        <div class="cornell-left">Fungsi VLOOKUP & HLOOKUP</div>
+        <div class="cornell-left">Mengapa Menggunakan Poster?</div>
         <div class="cornell-right">
-          Fungsi ini digunakan untuk mencari kata kunci pada ujung tabel dan
-          mengambil data yang sejajar dengannya; <b>VLOOKUP</b> untuk tabel yang
-          datanya tersusun menurun (vertikal), sedangkan <b>HLOOKUP</b> untuk
-          tabel yang datanya tersusun menyamping (horizontal).<br /><br />
-          <b>Contoh VLOOKUP:</b>
-          <code>=VLOOKUP("A01", TabelBarang, 2, FALSE)</code><br />
-          <b>Contoh HLOOKUP:</b>
-          <code>=HLOOKUP("Senin", TabelJadwal, 2, FALSE)</code>
+          Kampanye keamanan internet paling efektif disampaikan melalui media
+          visual (gambar). Sebuah poster yang memadukan tulisan singkat yang
+          padat (seperti slogan <i>"Saring Sebelum Sharing!"</i>) dan warna yang
+          mencolok akan lebih cepat dipahami dan diingat oleh masyarakat
+          daripada membaca teks panjang.
         </div>
       </div>
 
-      <!-- INDEX & MATCH Digabung -->
-      <div class="cornell-row">
-        <div class="cornell-left">Fungsi INDEX & MATCH</div>
-        <div class="cornell-right">
-          Kedua fungsi ini bekerja dengan posisi letak data;
-          <b>INDEX</b> digunakan untuk mengambil isi data berdasarkan titik
-          koordinat baris dan kolomnya, sedangkan <b>MATCH</b> digunakan untuk
-          mencari nomor urut posisi dari sebuah data yang kita ketikkan.<br /><br />
-          <b>Contoh INDEX:</b> <code>=INDEX(TabelSiswa, 3, 2)</code><br />
-          <b>Contoh MATCH:</b> <code>=MATCH("Budi", KolomNama, 0)</code>
+      <!-- Praktikum Kelas (Unplugged) -->
+      <div
+        class="cornell-row"
+        style="background-color: #fff9e6; border-top: 2px solid #333"
+      >
+        <div class="cornell-left" style="background-color: #fff3cd">
+          📝 Praktikum Kelas: Sketsa Ide Desain
         </div>
-      </div>
-
-      <!-- CHOOSE -->
-      <div class="cornell-row">
-        <div class="cornell-left">Fungsi CHOOSE</div>
         <div class="cornell-right">
-          Memilih salah satu data dari daftar pilihan yang kita buat sendiri di
-          dalam rumus, berdasarkan nomor urut (indeks) yang diketikkan.<br /><br />
-          <b>Contoh:</b>
-          <code>=CHOOSE(2, "Emas", "Perak", "Perunggu")</code> (Hasilnya
-          "Perak").
-        </div>
-      </div>
-
-      <!-- SUM, SUMIF & SUMIFS Digabung -->
-      <div class="cornell-row">
-        <div class="cornell-left">Fungsi Penjumlahan: SUM, SUMIF & SUMIFS</div>
-        <div class="cornell-right">
-          Fungsi pemrosesan angka ini digunakan untuk menjumlahkan data; di mana
-          <b>SUM</b> menjumlahkan seluruh angka dalam suatu rentang tanpa
-          syarat, <b>SUMIF</b> menjumlahkan data berdasarkan satu syarat
-          tertentu, dan <b>SUMIFS</b> menjumlahkan data berdasarkan lebih dari
-          satu syarat sekaligus.<br /><br />
-          <b>Contoh SUM:</b> <code>=SUM(B2:B10)</code><br />
-          <b>Contoh SUMIF:</b>
-          <code>=SUMIF(KolomMenu, "Ayam Geprek", KolomHarga)</code><br />
-          <b>Contoh SUMIFS:</b>
-          <code
-            >=SUMIFS(KolomHarga, KolomMenu, "Ayam Geprek", KolomKelas,
-            "8A")</code
-          >
+          <b>Aktivitas Unplugged (Tanpa Komputer):</b><br />
+          Sebelum menyentuh komputer, desainer grafis yang hebat selalu memulai
+          dari kertas!<br /><br />
+          <b>Tugasmu:</b>
+          <ol>
+            <li>
+              Ambil selembar kertas kosong. Kita akan membuat sketsa
+              (oret-oretan) desain poster dengan tema <b>"Hati-Hati Hoax"</b>.
+            </li>
+            <li>
+              Tentukan <b>Slogan Utama</b> (misal: Jari Cerdas, Stop Berita
+              Palsu!).
+            </li>
+            <li>
+              Gambarkan kotak-kotak kasar untuk menentukan letak komposisi: di
+              mana letak judul, di mana letak gambar utama, dan di mana teks
+              penjelas.
+            </li>
+            <li>Simpan sketsamu untuk dieksekusi di ruang Lab minggu depan!</li>
+          </ol>
         </div>
       </div>
 
@@ -107,29 +92,12 @@
       <div class="cornell-bottom">
         <h3>📝 Kesimpulan</h3>
         <p>
-          Mengenal struktur baris dan kolom adalah kunci utama sebelum kita bisa
-          memerintahkan Excel untuk menghitung atau mencari data secara otomatis
-          menggunakan rumus pencarian (Lookup) maupun posisi koordinat
-          (Index/Match).
+          Internet bisa menjadi tempat yang berbahaya jika kita tidak memiliki
+          literasi digital yang baik. Dengan menciptakan karya visual seperti
+          poster kampanye anti-hoaks, kita tidak hanya melatih daya kreativitas,
+          tetapi juga ikut berkontribusi menjadikan internet tempat yang lebih
+          aman dan positif bagi orang lain.
         </p>
-      </div>
-
-      <!-- CHALLENGE / GAME LINGKUNGAN KELAS -->
-      <div
-        class="cornell-row"
-        style="background-color: #fff9e6; border-top: 2px solid #333"
-      >
-        <div class="cornell-left" style="background-color: #fff3cd">
-          👆 Tantangan Layar Sentuh
-        </div>
-        <div class="cornell-right">
-          <a href="https://excelexercises.com/lessons.html">Excel Challenge</a
-          ><br />
-          <a
-            href="https://wordwall.net/id/resource/47205678/informatika/pengenalan-excel"
-            >Pengenalan Excel</a
-          >
-        </div>
       </div>
     </div>
   </body>
