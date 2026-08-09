@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Materi 2 - Struktur Data Tree</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="header">
+      <a href="kelas-9.html" class="btn-back">🔙 Kembali</a>
+    </div>
+    <h1>Materi 2: Struktur Data Pohon (Tree)</h1>
+    <img
+      src="https://miro.medium.com/v2/resize:fit:1400/1*CT-RrdV83tqN2kU1ZTP4mQ.png"
+      alt="Diagram Binary Tree"
+      style="width: 50%; border-radius: 8px; margin-bottom: 15px"
+    />
+    <!-- Container Cornell -->
+    <div class="cornell-container">
+      <!-- Definisi Struktur Data Tree -->
+      <div class="cornell-row">
+        <div class="cornell-left">Apa itu Struktur Data Tree?</div>
+        <div class="cornell-right">
+          <b>Tree (Pohon)</b> adalah struktur data majemuk (non-linear) yang
+          digunakan untuk menyusun data secara hierarki (bertingkat). Bentuknya
+          menyerupai pohon yang terbalik, di mana akarnya berada di atas dan
+          daun-daunnya menyebar ke bawah.<br /><br />
+          <i>Contoh di dunia nyata:</i> Silsilah keluarga, struktur organisasi
+          kelas, atau susunan folder di dalam komputer (C: > Program Files >
+          Aplikasi).
+        </div>
+      </div>
+
+      <!-- Bagian-bagian Tree -->
+      <div class="cornell-row">
+        <div class="cornell-left">Bagian-bagian Struktur Data Tree</div>
+        <div class="cornell-right">
+          <!-- Gambar Ilustrasi -->
+
+          Sebuah "Pohon" data tersusun dari beberapa elemen utama:<br /><br />
+          • <b>Root (Akar):</b> Simpul paling atas. Ini adalah titik awal dari
+          sebuah pohon (hanya ada satu Root).<br />
+          • <b>Node (Simpul):</b> Titik-titik data yang menyusun pohon
+          tersebut.<br />
+          • <b>Edge (Sisi/Garis):</b> Garis penghubung yang menghubungkan satu
+          Node dengan Node lainnya (seperti ranting).<br />
+          • <b>Leaf (Daun):</b> Simpul paling ujung (paling bawah) yang sudah
+          tidak memiliki anak atau cabang lagi.
+        </div>
+      </div>
+
+      <!-- Jenis-jenis Tree -->
+      <div class="cornell-row">
+        <div class="cornell-left">Jenis Struktur Data Tree</div>
+        <div class="cornell-right">
+          Ada banyak jenis <i>Tree</i> di dalam ilmu komputer, namun dua yang
+          paling dasar adalah:<br /><br />
+          <b>1. Binary Tree (Pohon Biner):</b><br />
+          Aturannya sangat ketat: Setiap Node (Simpul) maksimal hanya boleh
+          memiliki <b>2 cabang anak</b> (cabang Kiri dan cabang Kanan). Tidak
+          boleh lebih!<br /><br />
+          <b>2. Linear Chart (Bagan Linear):</b><br />
+          Penyajian struktur berjenjang dalam bentuk bagan atau garis lurus yang
+          lebih sederhana dan berurutan.
+        </div>
+      </div>
+
+      <!-- Penerapan Binary Tree -->
+      <div class="cornell-row">
+        <div class="cornell-left">Penerapan Binary Tree</div>
+        <div class="cornell-right">
+          Kenapa komputer sangat menyukai <i>Binary Tree</i>? Jawabannya adalah
+          untuk <b>kecepatan pencarian data</b>!<br /><br />
+          Dalam penerapan <i>Binary Search Tree</i>, komputer menyortir data
+          dengan aturan: angka yang lebih kecil ditaruh di cabang kiri, dan
+          angka yang lebih besar ditaruh di cabang kanan. <br /><br />
+          Saat kamu mencari sebuah nama di kontak HP yang berisi ribuan nomor,
+          komputer tidak mencarinya satu per satu, melainkan langsung membelah
+          jalurnya ke kiri atau ke kanan terus-menerus. Hasilnya? Pencarian
+          selesai dalam kedipan mata!
+        </div>
+      </div>
+
+      <!-- Praktikum Kelas (Unplugged) -->
+      <div
+        class="cornell-row"
+        style="background-color: #fff9e6; border-top: 2px solid #333"
+      >
+        <div class="cornell-left" style="background-color: #fff3cd">
+          📝 Praktikum Kelas: Menggambar Tree
+        </div>
+        <div class="cornell-right">
+          <b>Aktivitas Unplugged (Tanpa Komputer):</b><br />
+          Mari memodelkan struktur hierarki kelas kita ke dalam bentuk
+          <i>Tree</i>!<br /><br />
+          <b>Langkah-langkah:</b>
+          <ol>
+            <li>
+              Buka buku tulismu. Gambarlah lingkaran paling atas sebagai
+              <b>Root</b>, lalu isi dengan nama "Wali Kelas".
+            </li>
+            <li>
+              Buat garis (<i>Edge</i>) ke bawah dan buat <b>Node</b> baru untuk
+              "Ketua Kelas".
+            </li>
+            <li>
+              Pecah cabang dari Ketua Kelas menjadi dua (sebagai
+              <b>Binary Tree</b>) untuk "Sekretaris" dan "Bendahara".
+            </li>
+            <li>
+              Lanjutkan membuat cabang ke bawah untuk anggota seksi-seksi,
+              hingga berakhir pada anggota yang menjadi <b>Leaf (Daun)</b> di
+              posisi paling bawah!
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- KESIMPULAN -->
+      <div class="cornell-bottom">
+        <h3>📝 Kesimpulan</h3>
+        <p>
+          Struktur data <i>Tree</i> memungkinkan masalah yang sangat kompleks
+          disederhanakan melalui pemetaan hierarki (akar hingga daun).
+          Penggunaan <i>Binary Tree</i> secara khusus sangat membantu perangkat
+          lunak untuk melakukan pencarian data raksasa dalam waktu yang sangat
+          singkat.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

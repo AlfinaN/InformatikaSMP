@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Materi 3 - Peringkasan & Pencarian Data</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="header">
+      <a href="kelas-8.html" class="btn-back">🔙 Kembali</a>
+    </div>
+    <h1>Bab 1: Peringkasan & Pencarian Data</h1>
+    <!-- Container Cornell -->
+    <div class="cornell-container">
+      <!-- Pencarian Sederhana (Ctrl + F) -->
+      <div class="cornell-row">
+        <div class="cornell-left">Pencarian Cepat (Ctrl + F)</div>
+        <div class="cornell-right">
+          Terkadang, kita tidak butuh rumus yang rumit seperti VLOOKUP hanya
+          untuk mencari satu nama di tabel yang panjang. Cara paling mudah dan
+          ampuh adalah menggunakan jalan pintas keyboard:<br /><br />
+          Tekan <b>Ctrl</b> dan huruf <b>F</b> (<i>Find</i>) secara bersamaan.
+          Sebuah kotak pencarian akan muncul, ketik kata yang dicari, dan Excel
+          akan langsung menyorot sel tersebut!
+        </div>
+      </div>
+
+      <!-- SUM & COUNT -->
+      <div class="cornell-row">
+        <div class="cornell-left">Fungsi Dasar: SUM & COUNT</div>
+        <div class="cornell-right">
+          Jangan sampai tertukar! Keduanya untuk menghitung, tapi fungsinya
+          berbeda:<br /><br />
+          • <b>SUM (Menjumlahkan Nilai):</b> Menjumlahkan total angka yang ada
+          di dalam sel. (Contoh: Menghitung total uang).<br />
+          • <b>COUNT (Menghitung Jumlah Data):</b> Menghitung ada berapa banyak
+          kotak/sel yang berisi angka. (Contoh: Menghitung ada berapa orang yang
+          mengumpulkan uang).
+        </div>
+      </div>
+
+      <!-- SUMIF & COUNTIF -->
+      <div class="cornell-row">
+        <div class="cornell-left">Fungsi Bersyarat: SUMIF & COUNTIF</div>
+        <div class="cornell-right">
+          Tambahan kata <b>"IF"</b> (Jika) berarti Excel hanya akan menghitung
+          data yang memenuhi syarat tertentu yang kita berikan.<br /><br />
+          • <b>COUNTIF:</b> Menghitung jumlah kotak <i>JIKA</i> syaratnya cocok.
+          (Contoh: Menghitung berapa siswa Laki-laki saja).<br />
+          • <b>SUMIF:</b> Menjumlahkan angka <i>JIKA</i> syaratnya cocok.
+          (Contoh: Menjumlahkan total tabungan milik siswa Laki-laki saja).<br /><br />
+          <i
+            >Catatan: Jika syaratnya lebih dari satu, gunakan
+            <b>COUNTIFS</b> atau <b>SUMIFS</b> (ada tambahan huruf 'S' di
+            belakang).</i
+          >
+        </div>
+      </div>
+
+      <!-- Praktikum Kelas (Minggu 5) -->
+      <div class="cornell-row" style="background-color: #fff9e6">
+        <div class="cornell-left" style="background-color: #fff3cd">
+          📝 Praktikum Kelas (Minggu 5): Logika Menghitung
+        </div>
+        <div class="cornell-right">
+          <b>Aktivitas (Tanpa Komputer):</b><br />
+          Mari melatih logika otak kita membedakan SUM dan COUNT!
+          <ol>
+            <li>
+              Guru memberikan daftar 5 siswa beserta uang jajannya di papan
+              tulis.
+            </li>
+            <li>
+              Siswa berdiskusi: Jika ditanya "Berapa total uang jajan mereka
+              semua?", apakah kita pakai logika SUM atau COUNT?
+            </li>
+            <li>
+              Jika ditanya "Berapa banyak siswa yang membawa uang jajan di atas
+              Rp 5.000?", fungsi apa yang tepat? (<i>Jawaban: ....</i>).
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Praktikum Lab (Minggu 6) & Game -->
+      <div class="cornell-row" style="background-color: #eef9f0">
+        <div class="cornell-left" style="background-color: #d4edda">
+          💻 Misi Lab (Minggu 6): Detektif Uang Kas
+        </div>
+        <div class="cornell-right">
+          <b>Game Roleplay: Menjadi Bendahara Kelas!</b><br />
+          Di Lab, kamu ditunjuk menjadi Bendahara Kelas yang baru. Kamu harus
+          merapikan catatan keuangan kelas bulan ini di Excel!<br /><br />
+          <b>Tugasmu:</b>
+          <ol>
+            <li>
+              Ketik tabel daftar 10 nama temanmu, Jenis Kelamin (L/P), dan
+              Jumlah Uang Kas yang mereka bayar.
+            </li>
+            <li>
+              Gunakan <b>Ctrl + F</b> untuk mencari dengan cepat apakah nama
+              "Budi" sudah bayar atau belum.
+            </li>
+            <li>
+              Gunakan <code>=SUM</code> untuk menghitung total uang kas yang
+              terkumpul.
+            </li>
+            <li>
+              Gunakan <code>=COUNT</code> untuk menghitung berapa anak yang
+              sudah membayar.
+            </li>
+            <li>
+              <b>Tantangan Ekstra:</b> Gunakan <code>=COUNTIF</code> untuk
+              menghitung ada berapa anak perempuan (P) yang sudah bayar!
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- KESIMPULAN -->
+      <div class="cornell-bottom">
+        <h3>📝 Kesimpulan</h3>
+        <p>
+          Membedakan antara menjumlahkan nilai (SUM) dan menghitung jumlah data
+          (COUNT) adalah kunci utama dalam meringkas data. Dengan bantuan syarat
+          tambahan (IF) dan jalan pintas Ctrl+F, kita bisa menganalisis tabel
+          data yang panjang dengan sangat cepat dan akurat.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

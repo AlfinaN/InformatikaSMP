@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Materi 3 - Struktur Data Graf (Graph)</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="header">
+      <a href="kelas-9.html" class="btn-back">🔙 Kembali</a>
+    </div>
+    <h1>Materi 3: Struktur Data Graf (Graph)</h1>
+    <img
+      src="https://jakarta.telkomuniversity.ac.id/wp-content/uploads/2026/02/Pengenalan-Tree-dan-Graph-dalam-Struktur-Data-1200x600.webp"
+      alt="Ilustrasi Vertex dan Edge pada Graf"
+      style="
+        width: 40%;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        display: block;
+      "
+    />
+    <!-- Container Cornell -->
+    <div class="cornell-container">
+      <!-- Definisi Struktur Data Graf -->
+      <div class="cornell-row">
+        <div class="cornell-left">Apa itu Struktur Data Graf?</div>
+        <div class="cornell-right">
+          <b>Graf (Graph)</b> adalah struktur data majemuk yang digunakan untuk
+          memodelkan hubungan antar objek dalam sebuah jaringan. Tidak seperti
+          <i>Tree</i> yang memiliki aturan "Atas-Bawah" (Akar ke Daun),
+          titik-titik di dalam <i>Graph</i> bisa saling terhubung secara bebas
+          seperti jaring laba-laba.<br /><br />
+          <i>Contoh di dunia nyata:</i> Jaringan pertemanan di media sosial
+          (siapa berteman dengan siapa), atau peta jalan raya yang menghubungkan
+          berbagai kota (Google Maps).
+        </div>
+      </div>
+
+      <!-- Bagian-bagian Graf -->
+      <div class="cornell-row">
+        <div class="cornell-left">Bagian-bagian Graf (Vertex & Edge)</div>
+        <div class="cornell-right">
+          Sebuah jaring <i>Graph</i> dibentuk oleh dua elemen utama:<br /><br />
+          • <b>Vertex / Node (Simpul / Titik):</b> Titik data itu sendiri. Di
+          dalam peta, <i>Vertex</i> ibarat sebuah bangunan, persimpangan, atau
+          kota.<br />
+          • <b>Edge (Sisi / Garis):</b> Garis penghubung antar titik. Di dalam
+          peta, <i>Edge</i> ibarat jalan raya yang menghubungkan satu bangunan
+          dengan bangunan lainnya.
+        </div>
+      </div>
+
+      <!-- Jenis-jenis Graf -->
+      <div class="cornell-row">
+        <div class="cornell-left">Jenis-jenis Struktur Graf</div>
+        <div class="cornell-right">
+          Berdasarkan bentuk garis hubungnya (<i>Edge</i>), Graf dibagi menjadi
+          beberapa jenis:<br /><br />
+          <img
+            src="https://ahmadzipur.com/wp-content/uploads/2023/12/STRUKTUR-DATA-1-_3-680x481.jpg"
+            alt=""
+            width="100%"
+          />
+          <b>1. Undirected Graph (Graf Tidak Berarah):</b><br />
+          Garisnya tidak memiliki tanda panah. Artinya, hubungannya bisa
+          bolak-balik (dua arah).
+          <i>(Contoh: Jalan dua arah yang bisa dilewati dari kedua sisi).</i
+          ><br /><br />
+          <b>2. Directed Graph (Graf Berarah):</b><br />
+          Garisnya memiliki tanda panah. Artinya, hubungan hanya berlaku searah
+          dengan panah tersebut. <i>(Contoh: Jalan satu arah / One-Way).</i
+          ><br /><br />
+          <b>3. Weighted Graph (Graf Berbobot):</b><br />
+          Setiap garis (<i>Edge</i>) memiliki nilai atau bobot angka.
+          <i
+            >(Contoh: Angka jarak "5 KM" atau waktu "10 Menit" yang tertera di
+            peta untuk berpindah dari satu titik ke titik lain).</i
+          >
+        </div>
+      </div>
+
+      <!-- Praktikum Kelas (Unplugged) -->
+      <div
+        class="cornell-row"
+        style="background-color: #fff9e6; border-top: 2px solid #333"
+      >
+        <div class="cornell-left" style="background-color: #fff3cd">
+          📝 Praktikum Kelas: Menggambar Peta Graf
+        </div>
+        <div class="cornell-right">
+          <b>Aktivitas Unplugged (Tanpa Komputer):</b><br />
+          Ternyata, tanpa sadar kamu sudah sering menggunakan logika
+          <i>Graph</i> setiap hari! Mari kita buktikan.<br /><br />
+          <b>Langkah-langkah:</b>
+          <ol>
+            <li>
+              Buka buku tulismu. Buatlah sebuah titik (<b>Vertex</b>) di ujung
+              kiri dan beri nama "Rumah". Buat titik lain di ujung kanan dan
+              beri nama "Sekolah".
+            </li>
+            <li>
+              Gambarkan titik-titik persimpangan penting atau bangunan yang kamu
+              lewati (misal: "Indomaret", "Masjid", "Lampu Merah"). Ini semua
+              adalah <b>Vertex</b>.
+            </li>
+            <li>
+              Tarik garis jalan yang menghubungkan titik-titik tersebut (Ini
+              adalah <b>Edge</b>).
+            </li>
+            <li>
+              Jika ada jalan tembusan atau gang tikus, gambarkan juga garisnya
+              sebagai rute alternatif!
+            </li>
+            <li>
+              <i
+                >Selamat! Kamu baru saja memodelkan sebuah struktur data
+                Graph!</i
+              >
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- KESIMPULAN -->
+      <div class="cornell-bottom">
+        <h3>📝 Kesimpulan</h3>
+        <p>
+          Struktur data <i>Graph</i> sangat berguna untuk memetakan hubungan
+          yang rumit menjadi sederhana melalui Simpul (<i>Vertex</i>) dan Garis
+          (<i>Edge</i>). Inilah rahasia di balik bagaimana aplikasi navigasi
+          bisa mencarikan rute tercepat untukmu ke sekolah!
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
