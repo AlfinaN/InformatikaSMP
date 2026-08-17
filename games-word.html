@@ -1,0 +1,895 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Word Rescue Mission - Edisi Lengkap</title>
+    <style>
+      /* Gaya Dasar */
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #e0e5ec;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      /* Top Bar & Ribbon */
+      .app-header {
+        width: 100%;
+        background-color: #2b579a;
+        color: white;
+        padding: 10px 20px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+      }
+
+      .app-title {
+        font-weight: bold;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .score-board {
+        font-weight: bold;
+        background: #1a365d;
+        padding: 5px 15px;
+        border-radius: 20px;
+      }
+
+      .btn-hint {
+        background-color: #ffc107;
+        color: #000;
+        border: none;
+        padding: 5px 15px;
+        border-radius: 15px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.2s;
+        text-decoration: none;
+      }
+      .btn-hint:hover {
+        background-color: #e0a800;
+      }
+
+      .ribbon {
+        width: 100%;
+        background-color: #f3f2f1;
+        padding: 10px 20px;
+        display: flex;
+        gap: 15px;
+        box-sizing: border-box;
+        border-bottom: 1px solid #c8c6c4;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .ribbon-group {
+        display: flex;
+        gap: 5px;
+        border-right: 1px solid #c8c6c4;
+        padding-right: 15px;
+        align-items: center;
+      }
+      .ribbon-group:last-child {
+        border-right: none;
+      }
+
+      .tool-btn {
+        background: transparent;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        padding: 5px 10px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.2s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #323130;
+      }
+
+      .tool-btn:hover {
+        background-color: #c8c6c4;
+      }
+      .tool-btn:active {
+        background-color: #a6a5a3;
+      }
+      .font-color {
+        border-bottom: 4px solid red;
+        font-weight: bold;
+      }
+      .icon-text {
+        font-size: 10px;
+        margin-top: 2px;
+      }
+
+      .tool-select {
+        padding: 4px;
+        border-radius: 4px;
+        border: 1px solid #c8c6c4;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      /* Area Kerja (Kertas & Papan Misi) */
+      .workspace {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        overflow-y: auto;
+      }
+
+      /* PANEL INSTRUKSI BARU (Di Luar Kertas) */
+      .task-panel {
+        background: #fff3cd;
+        color: #856404;
+        width: 100%;
+        max-width: 700px;
+        padding: 15px 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border: 2px solid #ffeeba;
+        display: none; /* Disembunyikan sebelum game mulai */
+        align-items: center;
+        gap: 15px;
+        box-sizing: border-box;
+      }
+      .instruction-badge {
+        background: #ffc107;
+        color: #000;
+        font-weight: bold;
+        padding: 5px 15px;
+        border-radius: 20px;
+        white-space: nowrap;
+      }
+      .instruction-text {
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      /* Kertas Dokumen */
+      .paper {
+        background: white;
+        width: 100%;
+        max-width: 700px;
+        min-height: 250px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        border: 1px solid #d2d0ce;
+        padding: 40px 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Teks di tengah kertas secara default */
+        align-items: flex-start; /* Teks rata kiri secara default */
+        box-sizing: border-box;
+      }
+
+      .mission-text {
+        font-size: 22px;
+        color: #323130;
+        transition: 0.3s;
+        width: 100%;
+      }
+
+      /* Area Keyboard Virtual */
+      .keyboard-container {
+        width: 100%;
+        background-color: #2c3e50;
+        padding: 15px 10px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        border-top: 4px solid #1a252f;
+      }
+
+      .kb-row {
+        display: flex;
+        gap: 5px;
+        justify-content: center;
+        width: 100%;
+        max-width: 850px;
+      }
+
+      .key {
+        background-color: #ecf0f1;
+        border: none;
+        border-bottom: 4px solid #bdc3c7;
+        border-radius: 6px;
+        padding: 12px 10px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #2c3e50;
+        cursor: pointer;
+        min-width: 40px;
+        text-align: center;
+        transition: 0.1s;
+        user-select: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .key:active {
+        transform: translateY(4px);
+        border-bottom-width: 0;
+        margin-bottom: 4px;
+      }
+      .key.special {
+        background-color: #95a5a6;
+        border-color: #7f8c8d;
+        color: white;
+        min-width: 65px;
+      }
+      .key.arrow {
+        background-color: #34495e;
+        border-color: #2c3e50;
+        color: white;
+        min-width: 45px;
+      }
+
+      .key.active-toggle {
+        background-color: #e74c3c !important;
+        border-color: #c0392b !important;
+        color: white;
+        transform: translateY(2px);
+        border-bottom-width: 2px;
+      }
+
+      /* Pop-Up Modal Petunjuk */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 100;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(3px);
+      }
+      .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto;
+        padding: 20px 30px;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 700px;
+        max-height: 80vh;
+        overflow-y: auto;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        position: relative;
+      }
+      .close-btn {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .close-btn:hover {
+        color: #000;
+      }
+      .modal h2 {
+        margin-top: 0;
+        color: #2b579a;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 10px;
+      }
+      .modal ul {
+        line-height: 1.8;
+        padding-left: 20px;
+      }
+      .modal b {
+        color: #d35400;
+      }
+
+      /* Animasi Kemenangan */
+      @keyframes flashSuccess {
+        0% {
+          background-color: white;
+        }
+        50% {
+          background-color: #d4edda;
+          transform: scale(1.02);
+        }
+        100% {
+          background-color: white;
+        }
+      }
+      .success-anim {
+        animation: flashSuccess 0.8s ease;
+      }
+
+      /* Responsif HP */
+      @media (max-width: 600px) {
+        .key {
+          padding: 8px 3px;
+          font-size: 11px;
+          min-width: 25px;
+        }
+        .key.special {
+          min-width: 40px;
+          font-size: 10px;
+        }
+        .mission-text {
+          font-size: 16px;
+        }
+        .ribbon {
+          gap: 5px;
+          padding: 5px;
+        }
+        .tool-btn {
+          padding: 3px;
+          font-size: 14px;
+        }
+        .task-panel {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 5px;
+          padding: 10px;
+        }
+        .modal-content {
+          width: 95%;
+          margin: 10% auto;
+          padding: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="app-header">
+      <div class="header">
+        <a href="index.html" class="btn-hint">🔙 Kembali</a>
+      </div>
+      <div class="app-title">
+        📝 Word Rescue Mission
+        <button class="btn-hint" onclick="bukaPetunjuk()">📖 Petunjuk</button>
+      </div>
+      <div class="score-board">
+        Level: <span id="level-display">0</span>/20 | Skor:
+        <span id="score-display">0</span>
+      </div>
+    </div>
+
+    <!-- UI Ribbon (Menu Word) -->
+    <div class="ribbon">
+      <div class="ribbon-group">
+        <select
+          class="tool-select"
+          id="cb-font"
+          onchange="tekanRibbon('font_family')"
+        >
+          <option value="">Jenis Huruf</option>
+          <option value="arial">Arial</option>
+          <option value="tnr">Times New Roman</option>
+        </select>
+        <select
+          class="tool-select"
+          id="cb-size"
+          onchange="tekanRibbon('font_size')"
+        >
+          <option value="">Ukuran</option>
+          <option value="12">12</option>
+          <option value="16">16</option>
+        </select>
+      </div>
+      <div class="ribbon-group">
+        <button class="tool-btn" onclick="tekanRibbon('bold')"><b>B</b></button>
+        <button class="tool-btn" onclick="tekanRibbon('italic')">
+          <i>I</i>
+        </button>
+        <button class="tool-btn" onclick="tekanRibbon('underline')">
+          <u>U</u>
+        </button>
+      </div>
+      <div class="ribbon-group">
+        <button class="tool-btn" onclick="tekanRibbon('align_left')">
+          ≡<span class="icon-text">Kiri</span>
+        </button>
+        <button class="tool-btn" onclick="tekanRibbon('align_center')">
+          <span style="transform: scaleX(0.7); display: inline-block">≡</span
+          ><span class="icon-text">Tengah</span>
+        </button>
+        <button class="tool-btn" onclick="tekanRibbon('align_right')">
+          <span style="text-align: right; width: 100%; display: block">≡</span
+          ><span class="icon-text">Kanan</span>
+        </button>
+        <button class="tool-btn" onclick="tekanRibbon('justify')">
+          ≣<span class="icon-text">Penuh</span>
+        </button>
+      </div>
+      <div class="ribbon-group">
+        <button class="tool-btn font-color" onclick="tekanRibbon('color')">
+          A
+        </button>
+        <button class="tool-btn" onclick="tekanRibbon('insert_pic')">
+          🖼️<span class="icon-text">Pictures</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Workspace -->
+    <div class="workspace">
+      <!-- Panel Instruksi (Terpisah dari Kertas) -->
+      <div class="task-panel" id="task-panel">
+        <div class="instruction-badge" id="instruction-badge">Misi 1 / 20</div>
+        <div class="instruction-text" id="instruction-text">
+          Instruksi akan muncul di sini.
+        </div>
+      </div>
+
+      <!-- Kertas Dokumen (Hanya untuk mengedit teks) -->
+      <div class="paper" id="paper-box">
+        <div class="mission-text" id="mission-text" style="text-align: center">
+          Klik <b>Petunjuk</b> di atas jika kamu bingung.<br />Klik tombol di
+          bawah untuk memulai misi! <br /><br />
+          <button
+            onclick="mulaiGame()"
+            id="start-btn"
+            style="
+              padding: 10px 20px;
+              font-size: 18px;
+              background: #2b579a;
+              color: white;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+              font-weight: bold;
+            "
+          >
+            ▶ Mulai Game (20 Level)
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Keyboard Virtual -->
+    <div class="keyboard-container">
+      <!-- Baris 1: Angka & Simbol -->
+      <div class="kb-row">
+        <button class="key" onclick="tekanKunci('1')">1 !</button>
+        <button class="key" onclick="tekanKunci('2')">2 @</button>
+        <button class="key" onclick="tekanKunci('3')">3 #</button>
+        <button class="key" onclick="tekanKunci('4')">4 $</button>
+        <button class="key" onclick="tekanKunci('5')">5 %</button>
+        <button class="key" onclick="tekanKunci('6')">6 ^</button>
+        <button class="key" onclick="tekanKunci('7')">7 &</button>
+        <button class="key" onclick="tekanKunci('8')">8 *</button>
+        <button class="key" onclick="tekanKunci('9')">9 (</button>
+        <button class="key" onclick="tekanKunci('0')">0 )</button>
+      </div>
+      <!-- Baris 2 -->
+      <div class="kb-row">
+        <button class="key" onclick="tekanKunci('Q')">Q</button>
+        <button class="key" onclick="tekanKunci('W')">W</button>
+        <button class="key" onclick="tekanKunci('E')">E</button>
+        <button class="key" onclick="tekanKunci('R')">R</button>
+        <button class="key" onclick="tekanKunci('T')">T</button>
+        <button class="key" onclick="tekanKunci('Y')">Y</button>
+        <button class="key" onclick="tekanKunci('U')">U</button>
+        <button class="key" onclick="tekanKunci('I')">I</button>
+        <button class="key" onclick="tekanKunci('O')">O</button>
+        <button class="key" onclick="tekanKunci('P')">P</button>
+      </div>
+      <!-- Baris 3 -->
+      <div class="kb-row">
+        <button
+          class="key special"
+          id="btn-caps"
+          onclick="aksiSpesial('capslock')"
+        >
+          Caps Lock
+        </button>
+        <button class="key" onclick="tekanKunci('A')">A</button>
+        <button class="key" onclick="tekanKunci('S')">S</button>
+        <button class="key" onclick="tekanKunci('D')">D</button>
+        <button class="key" onclick="tekanKunci('F')">F</button>
+        <button class="key" onclick="tekanKunci('G')">G</button>
+        <button class="key" onclick="tekanKunci('H')">H</button>
+        <button class="key" onclick="tekanKunci('J')">J</button>
+        <button class="key" onclick="tekanKunci('K')">K</button>
+        <button class="key" onclick="tekanKunci('L')">L</button>
+        <button class="key special" onclick="aksiSpesial('enter')">
+          Enter ↵
+        </button>
+      </div>
+      <!-- Baris 4 -->
+      <div class="kb-row">
+        <button class="key special" id="btn-shift" onclick="toggleShift()">
+          Shift
+        </button>
+        <button class="key" onclick="tekanKunci('Z')">Z</button>
+        <button class="key" onclick="tekanKunci('X')">X</button>
+        <button class="key" onclick="tekanKunci('C')">C</button>
+        <button class="key" onclick="tekanKunci('V')">V</button>
+        <button class="key" onclick="tekanKunci('B')">B</button>
+        <button class="key" onclick="tekanKunci('N')">N</button>
+        <button class="key" onclick="tekanKunci('M')">M</button>
+        <button class="key arrow" onclick="aksiSpesial('arrow_up')">↑</button>
+      </div>
+      <!-- Baris 5 -->
+      <div class="kb-row">
+        <button class="key special" id="btn-ctrl" onclick="toggleCtrl()">
+          Ctrl
+        </button>
+        <button class="key" style="flex-grow: 1" onclick="tekanKunci('SPACE')">
+          Spacebar
+        </button>
+        <button class="key arrow" onclick="aksiSpesial('arrow_left')">←</button>
+        <button class="key arrow" onclick="aksiSpesial('arrow_down')">↓</button>
+        <button class="key arrow" onclick="aksiSpesial('arrow_right')">
+          →
+        </button>
+      </div>
+    </div>
+
+    <!-- Modal Petunjuk (Cheat Sheet) -->
+    <div id="modalPetunjuk" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="tutupPetunjuk()">&times;</span>
+        <h2>📖 Buku Petunjuk Game</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 20px">
+          <div style="flex: 1; min-width: 250px">
+            <h3>Shortcut Keyboard (Tombol Pintas)</h3>
+            <ul>
+              <li><b>Ctrl + A</b> : Memilih semua huruf (Select All)</li>
+              <li><b>Ctrl + B</b> : Menebalkan huruf (Bold)</li>
+              <li><b>Ctrl + C</b> : Menyalin tulisan (Copy)</li>
+              <li><b>Ctrl + F</b> : Mencari kata (Find)</li>
+              <li><b>Ctrl + I</b> : Membuat cetak miring (Italic)</li>
+              <li><b>Ctrl + S</b> : Menyimpan dokumen (Save)</li>
+              <li><b>Ctrl + U</b> : Membuat garis bawah (Underline)</li>
+              <li><b>Ctrl + Z</b> : Membatalkan perintah (Undo)</li>
+              <li><b>Ctrl + Y</b> : Mengembalikan yang dibatalkan (Redo)</li>
+              <li><b>Enter</b> : Baris baru / paragraf baru</li>
+              <li><b>Caps Lock</b> : Mengunci huruf kapital</li>
+              <li><b>Shift + [Tombol]</b> : Memunculkan simbol khusus</li>
+              <li><b>Tombol Panah</b> : Navigasi menggeser kursor</li>
+            </ul>
+          </div>
+          <div style="flex: 1; min-width: 250px">
+            <h3>Antarmuka UI Word (Ribbon)</h3>
+            <ul>
+              <li>
+                <b>Rata Kiri, Tengah, Kanan, Penuh</b> : Mengatur posisi teks
+              </li>
+              <li><b>Insert -> Pictures</b> : Memasukkan gambar</li>
+              <li><b>Font</b> : Mengganti jenis huruf (Arial, dll)</li>
+              <li><b>Ukuran Font</b> : Mengganti angka ukuran teks</li>
+              <li><b>Logo A (Bergaris warna)</b> : Mengubah warna tulisan</li>
+            </ul>
+          </div>
+        </div>
+        <button
+          onclick="tutupPetunjuk()"
+          style="
+            width: 100%;
+            padding: 10px;
+            background: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+          "
+        >
+          Paham! Tutup Petunjuk
+        </button>
+      </div>
+    </div>
+
+    <!-- LOGIKA GAME JAVASCRIPT -->
+    <script>
+      let levelSekarang = 0;
+      let skor = 0;
+      let statusCtrl = false;
+      let statusShift = false;
+
+      const daftarLevel = [
+        {
+          id: 1,
+          instruksi: "Tebalkan teks ini (Bold)!",
+          teksAwal: "Teks Tipis",
+          solusi: ["ctrl_B", "ribbon_bold"],
+          teksSukses: "<b>Teks Tipis</b>",
+        },
+        {
+          id: 2,
+          instruksi: "Buat teks ini menjadi miring (Italic)!",
+          teksAwal: "Teks Lurus",
+          solusi: ["ctrl_I", "ribbon_italic"],
+          teksSukses: "<i>Teks Lurus</i>",
+        },
+        {
+          id: 3,
+          instruksi: "Beri garis bawah pada teks ini (Underline)!",
+          teksAwal: "Teks Biasa",
+          solusi: ["ctrl_U", "ribbon_underline"],
+          teksSukses: "<u>Teks Biasa</u>",
+        },
+        {
+          id: 4,
+          instruksi: "Pilih / Blok semua teks di layar ini (Select All)!",
+          teksAwal: "Paragraf panjang yang harus dipilih semua...",
+          solusi: ["ctrl_A"],
+          teksSukses:
+            "<span style='background:#b3d4fc; padding:5px;'>Paragraf panjang yang harus dipilih semua...</span>",
+        },
+        {
+          id: 5,
+          instruksi: "Salin (Copy) kata sandi ini!",
+          teksAwal: "Sandi: 123456",
+          solusi: ["ctrl_C"],
+          teksSukses: "Sandi: 123456 <br><br><i>(Teks berhasil di-Copy!)</i>",
+        },
+        {
+          id: 6,
+          instruksi: "Temukan kata (Find) 'Rahasia' dalam teks ini!",
+          teksAwal: "Banyak teks... Rahasia... Teks lagi",
+          solusi: ["ctrl_F"],
+          teksSukses:
+            "Banyak teks... <span style='background:yellow;'>Rahasia</span>... Teks lagi",
+        },
+        {
+          id: 7,
+          instruksi: "Oops, salah ketik! Batalkan perintah sebelumnya (Undo)!",
+          teksAwal: "Dokumen yang rskfsjkdfh",
+          solusi: ["ctrl_Z"],
+          teksSukses: "Dokumen yang Benar",
+        },
+        {
+          id: 8,
+          instruksi: "Kembalikan perintah yang barusan dibatalkan (Redo)!",
+          teksAwal: "Dokumen Kosong",
+          solusi: ["ctrl_Y"],
+          teksSukses: "Dokumen Terisi Kembali",
+        },
+        {
+          id: 9,
+          instruksi: "Simpan (Save) tugasmu sebelum mati lampu!",
+          teksAwal: "Tugas Akhir Informatika",
+          solusi: ["ctrl_S"],
+          teksSukses: "💾 <i>Tugas Akhir Informatika (Tersimpan)</i>",
+        },
+        {
+          id: 10,
+          instruksi: "Geser teks ini ke Rata Tengah (Align Center)!",
+          teksAwal: "Judul Laporan",
+          solusi: ["ribbon_align_center"],
+          teksSukses:
+            "<div style='text-align: center; width:100%;'>Judul Laporan</div>",
+        },
+        {
+          id: 11,
+          instruksi:
+            "Ratakan paragraf ini secara Penuh (Kiri-Kanan / Justify)!",
+          teksAwal: "Paragraf ini masih berantakan pinggirannya...",
+          solusi: ["ribbon_justify"],
+          teksSukses:
+            "<div style='text-align: justify; width:100%;'>Paragraf ini sudah rata kiri dan kanan secara penuh...</div>",
+        },
+        {
+          id: 12,
+          instruksi: "Ubah teks ini agar Rata Kanan (Align Right)!",
+          teksAwal: "Hormat Kami, Ttd.",
+          solusi: ["ribbon_align_right"],
+          teksSukses:
+            "<div style='text-align: right; width:100%;'>Hormat Kami, Ttd.</div>",
+        },
+        {
+          id: 13,
+          instruksi: "Pindahkan kalimat ini ke Paragraf/Baris Baru!",
+          teksAwal: "Baris Satu. |",
+          solusi: ["special_enter"],
+          teksSukses: "Baris Satu.<br>|",
+        },
+        {
+          id: 14,
+          instruksi: "Kunci agar huruf menjadi Kapital (Besar) semua!",
+          teksAwal: "Bersiap mengetik judul...",
+          solusi: ["special_capslock"],
+          teksSukses: "<b>CAPS LOCK AKTIF!</b> SIAP MENGETIK!",
+        },
+        {
+          id: 15,
+          instruksi: "Kombinasikan [Shift] + [1] untuk membuat tanda seru!",
+          teksAwal: "AWAS",
+          solusi: ["shift_1"],
+          teksSukses: "AWAS !",
+        },
+        {
+          id: 16,
+          instruksi: "Gunakan Panah Kanan untuk menggeser kursor!",
+          teksAwal: "Typ|o",
+          solusi: ["special_arrow_right"],
+          teksSukses: "Typo|",
+        },
+        {
+          id: 17,
+          instruksi: "Ubah Jenis Huruf (Font) teks ini di menu atas!",
+          teksAwal: "Teks Biasa",
+          solusi: ["ribbon_font_family"],
+          teksSukses:
+            "<span style='font-family: Arial, sans-serif;'>Teks dengan Font Baru</span>",
+        },
+        {
+          id: 18,
+          instruksi: "Ubah Ukuran Font menjadi lebih besar!",
+          teksAwal: "Teks Kecil",
+          solusi: ["ribbon_font_size"],
+          teksSukses: "<span style='font-size: 32px;'>Teks Besar!</span>",
+        },
+        {
+          id: 19,
+          instruksi: "Ubah Warna Font menjadi Merah (Logo A)!",
+          teksAwal: "Teks Hitam",
+          solusi: ["ribbon_color"],
+          teksSukses: "<span style='color: red;'>Teks Merah</span>",
+        },
+        {
+          id: 20,
+          instruksi: "Masukkan gambar dari menu Insert Pictures!",
+          teksAwal: "(Area Kosong)",
+          solusi: ["ribbon_insert_pic"],
+          teksSukses: "🖼️ <i>(Gambar Berhasil Dimasukkan)</i>",
+        },
+      ];
+
+      function bukaPetunjuk() {
+        document.getElementById("modalPetunjuk").style.display = "block";
+      }
+      function tutupPetunjuk() {
+        document.getElementById("modalPetunjuk").style.display = "none";
+      }
+
+      function mulaiGame() {
+        // Tampilkan Panel Instruksi Baru, Sembunyikan Tombol Start
+        document.getElementById("task-panel").style.display = "flex";
+        document.getElementById("mission-text").style.textAlign = "left"; // Kembalikan ke kiri
+
+        levelSekarang = 0;
+        skor = 0;
+        document.getElementById("cb-font").value = "";
+        document.getElementById("cb-size").value = "";
+        updateUI();
+        muatLevel();
+      }
+
+      function muatLevel() {
+        if (levelSekarang >= daftarLevel.length) {
+          // Sembunyikan Panel Instruksi saat Game Tamat
+          document.getElementById("task-panel").style.display = "none";
+          document.getElementById("mission-text").style.textAlign = "center";
+          document.getElementById("mission-text").innerHTML =
+            "🎉 Luar Biasa! Kamu resmi menjadi MASTER MICROSOFT WORD!<br><br><button onclick='mulaiGame()' style='margin-top:20px; padding: 10px 20px; font-size: 18px; background:#2b579a; color:white; border:none; border-radius:5px; cursor:pointer;'>Main Lagi</button>";
+          return;
+        }
+
+        const level = daftarLevel[levelSekarang];
+
+        // Render Instruksi di Panel Atas (Kuning)
+        document.getElementById("instruction-badge").innerText =
+          "Misi " + level.id + " / 20";
+        document.getElementById("instruction-badge").style.background =
+          "#ffc107";
+        document.getElementById("instruction-text").innerText = level.instruksi;
+
+        // Render Konten di Area Kertas
+        document.getElementById("mission-text").innerHTML =
+          "<span style='color:#333;'>" + level.teksAwal + "</span>";
+
+        // Reset Toggle
+        if (statusCtrl) toggleCtrl();
+        if (statusShift) toggleShift();
+      }
+
+      function toggleCtrl() {
+        statusCtrl = !statusCtrl;
+        const btn = document.getElementById("btn-ctrl");
+        statusCtrl
+          ? btn.classList.add("active-toggle")
+          : btn.classList.remove("active-toggle");
+      }
+
+      function toggleShift() {
+        statusShift = !statusShift;
+        const btn = document.getElementById("btn-shift");
+        statusShift
+          ? btn.classList.add("active-toggle")
+          : btn.classList.remove("active-toggle");
+      }
+
+      function tekanKunci(karakter) {
+        let aksi = "";
+        if (statusCtrl) {
+          aksi = "ctrl_" + karakter;
+          toggleCtrl();
+        } else if (statusShift) {
+          aksi = "shift_" + karakter;
+          toggleShift();
+        } else {
+          aksi = "ketik_" + karakter;
+        }
+        cekJawaban(aksi);
+      }
+
+      function aksiSpesial(namaAksi) {
+        cekJawaban("special_" + namaAksi);
+      }
+
+      function tekanRibbon(namaTombol) {
+        cekJawaban("ribbon_" + namaTombol);
+        if (namaTombol === "font_family")
+          document.getElementById("cb-font").value = "";
+        if (namaTombol === "font_size")
+          document.getElementById("cb-size").value = "";
+      }
+
+      function cekJawaban(aksiPemain) {
+        if (levelSekarang >= daftarLevel.length) return;
+        const level = daftarLevel[levelSekarang];
+
+        if (level.solusi.includes(aksiPemain)) {
+          berhasil(level);
+        } else {
+          const paper = document.getElementById("paper-box");
+          paper.style.border = "3px solid #e74c3c";
+          setTimeout(() => {
+            paper.style.border = "1px solid #d2d0ce";
+          }, 300);
+        }
+      }
+
+      function berhasil(level) {
+        const paper = document.getElementById("paper-box");
+        skor += 100;
+        updateUI();
+
+        // Tampilkan Jawaban Benar di Kertas
+        document.getElementById("mission-text").innerHTML = level.teksSukses;
+        paper.classList.add("success-anim");
+
+        // Ubah Panel Instruksi menjadi Hijau
+        document.getElementById("instruction-badge").innerText = "BENAR! +100";
+        document.getElementById("instruction-badge").style.background =
+          "#2ecc71";
+        document.getElementById("instruction-badge").style.color = "white";
+        document.getElementById("instruction-text").innerText = "Bagus sekali!";
+
+        setTimeout(() => {
+          paper.classList.remove("success-anim");
+          document.getElementById("instruction-badge").style.color = "#000";
+          levelSekarang++;
+          updateUI();
+          muatLevel();
+        }, 1800);
+      }
+
+      function updateUI() {
+        document.getElementById("score-display").innerText = skor;
+        let tampilLevel = levelSekarang + 1;
+        if (tampilLevel > daftarLevel.length) tampilLevel = daftarLevel.length;
+        document.getElementById("level-display").innerText = tampilLevel;
+      }
+    </script>
+  </body>
+</html>

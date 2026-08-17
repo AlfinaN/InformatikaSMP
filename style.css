@@ -107,6 +107,12 @@ body.slide-page {
   background-color: #555;
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* =========================================
    LAYOUT CATATAN CORNELL (Materi 1)
    ========================================= */
